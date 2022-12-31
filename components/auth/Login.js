@@ -9,16 +9,15 @@ export class Register extends Component {
 
         this.state = {
             email: '',
-            password: '',
-            name: ''
+            password: ''
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
     
     onSignUp(){
-        const { email, password, name} = this.state;
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        const { email, password } = this.state;
+        firebase.auth().siginInWithEmailAndPassword(email, password)
         .then((result) => {
             console.log(result)
         })
@@ -30,10 +29,6 @@ export class Register extends Component {
     render () {
         return (
     <View>
-      <TextInput
-            placeholder="name"
-            onChangeText={(name) => this.setState({ name })}  
-      />
       <TextInput
             placeholder="email"
             onChangeText={(email) => this.setState({ email })}  
@@ -53,4 +48,4 @@ export class Register extends Component {
   } 
 }
 
-export default Register
+export default Login
