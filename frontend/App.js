@@ -10,8 +10,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
+import LoginScreen from './components/auth/Login';
 import MainScreen from './components/Main';
-
+import AddScreen from './components/main/Add'
+import SaveScreen from './components/main/Save'
+import CommentScreen  from './components/main/Comment';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -76,6 +79,7 @@ export class App extends Component {
           <Stack.Navigator initialRouteName="Landing">
             <Stack.Screen name="Landing" component={LandingScreen} options={{ headerShow: false }} />
             <Stack.Screen name="Register" component={RegisterScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       )
@@ -85,7 +89,11 @@ export class App extends Component {
       <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Main">
-              <Stack.Screen name="Main" component={MainScreen} options={{ headerShow: false }} />
+              <Stack.Screen name="Main" component={MainScreen} />
+              <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation} />
+              <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation} />
+              <Stack.Screen name="Comment" component={CommentScreen} navigation={this.props.navigation} />
+
             </Stack.Navigator>
           </NavigationContainer>
       </Provider>
